@@ -341,6 +341,7 @@
 @media (max-width: 1024px) {
   .about {
     padding: var(--space-page-top-m) var(--space-page-gutter-m);
+    padding-top: 2.5rem !important;
   }
 
   .about__content {
