@@ -234,7 +234,8 @@
   }
 
   .about__content {
-    height: calc(100vh - 10rem);
+    flex: 1;
+    min-height: 0;
     margin-top: 2rem;
     align-items: stretch;
   }
@@ -261,7 +262,6 @@
     max-width: 28rem;
     flex: 1; /* Stretch vertically to fill remaining space */
     min-height: 0;
-    max-height: 32.4375rem; /* Cap at Figma height */
     border-radius: var(--radius-card);
     overflow: hidden;
   }
@@ -301,7 +301,6 @@
 
   .about__content {
     margin-top: 1.5rem;
-    height: calc(100vh - 8.5rem);
   }
 
   .about__left {
@@ -310,10 +309,6 @@
 
   .about__photo-wrapper {
     gap: 1rem;
-  }
-
-  .about__photo {
-    max-height: 25rem; /* Scale down the photo */
   }
 
   .about__right {
@@ -419,3 +414,15 @@
     font-size: 1rem !important;
   }
 }
+
+@media (min-width: 1600px) {
+  .about__photo {
+    max-width: none;
+  }
+}
+
+body.about-page {
+  min-height: auto;
+}
+
+
