@@ -613,7 +613,6 @@
 @media (max-width: 1024px) {
   .case {
     padding: var(--space-page-top-m) var(--space-page-gutter-m);
-    padding-top: 2.5rem !important;
   }
 
   .case__hero {

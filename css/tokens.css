@@ -102,3 +102,9 @@
     --text-body: 1.25rem;
   }
 }
+
+@media (max-width: 1024px) {
+  :root {
+    --space-page-top-m: 2rem;
+  }
+}
