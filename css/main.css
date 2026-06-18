@@ -1,0 +1,21 @@
+/* ============================================
+   main.css — Single import entry point
+   ============================================ */
+
+/* Foundation */
+@import 'reset.css';
+@import 'tokens.css';
+@import 'global.css';
+
+/* Components */
+@import 'components/header.css';
+@import 'components/footer.css';
+@import 'components/project-card.css';
+@import 'components/info-card.css';
+@import 'components/stats-block.css';
+@import 'components/image-text-block.css';
+
+/* Pages */
+@import 'pages/home.css';
+@import 'pages/about.css';
+@import 'pages/case-study.css';

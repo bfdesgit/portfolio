@@ -1,0 +1,139 @@
+/* ============================================
+   header.css — Site header, logo, nav, contact button
+   ============================================ */
+
+/* ---- Header container ---- */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--max-content);
+  margin: 0 auto;
+  height: 3rem;
+  position: relative;
+}
+
+/* ---- Nav link ---- */
+.header__nav-link {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-nav);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-snug);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.header__nav-link:hover {
+  opacity: 0.7;
+}
+
+/* ---- Logo ---- */
+.header__logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header__logo-text {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: var(--text-logo);
+  line-height: var(--leading-tight);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.header__logo-text em {
+  font-style: italic;
+}
+
+/* ---- Contact button ---- */
+.btn-contact {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 1rem;
+  width: 7.5rem;
+  background: var(--color-surface);
+  border-radius: var(--radius-button);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-nav);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-snug);
+  color: var(--color-accent);
+  text-align: center;
+  white-space: nowrap;
+  transition: transform var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.btn-contact:hover {
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.12);
+}
+
+.btn-contact:active {
+  transform: translateY(0);
+}
+
+/* ---- Mobile: icon-only button ---- */
+.btn-contact__icon {
+  display: none;
+  width: 2.125rem;
+  height: 2.125rem;
+  border-radius: 50%;
+  background: var(--color-surface);
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-contact__icon-dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  background: var(--color-accent);
+  border-radius: 50%;
+}
+
+.btn-contact__text {
+  display: inline-flex;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .header {
+    height: 2.125rem;
+  }
+
+  .header__logo-text {
+    font-size: var(--text-logo-mobile);
+  }
+
+  .header__nav-link {
+    font-size: var(--text-body-xs);
+  }
+
+  .btn-contact__text {
+    display: none;
+  }
+
+  .btn-contact {
+    width: auto;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+  }
+
+  .btn-contact__icon {
+    display: flex;
+  }
+}

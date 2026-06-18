@@ -1,0 +1,117 @@
+/* ============================================
+   global.css — Base styles, @font-face, body, gradient
+   ============================================ */
+
+/* ---- @font-face: Cooper Hewitt (self-hosted) ---- */
+@font-face {
+  font-family: 'Cooper Hewitt';
+  src: url('../fonts/CooperHewitt-Book.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cooper Hewitt';
+  src: url('../fonts/CooperHewitt-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cooper Hewitt';
+  src: url('../fonts/CooperHewitt-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---- Body ---- */
+body {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-primary);
+  background: linear-gradient(180deg, var(--color-bg-start) 0%, var(--color-bg-end) 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ---- Utility: Page wrapper ---- */
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: var(--space-page-top) var(--space-page-gutter);
+}
+
+.page__content {
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-content);
+  margin: 0 auto;
+}
+
+/* ---- Utility: Section spacing ---- */
+.section {
+  margin-top: var(--space-section-gap);
+}
+
+.section--sm {
+  margin-top: var(--space-section-gap-sm);
+}
+
+/* ---- Utility: Section divider ---- */
+.divider {
+  border: none;
+  height: 1px;
+  background: var(--color-divider);
+  width: 100%;
+  margin: var(--space-divider-margin) 0;
+}
+
+/* ---- Typography helpers ---- */
+.text-serif {
+  font-family: var(--font-serif);
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-subtle {
+  opacity: 0.6;
+}
+
+/* ---- Link underline animation ---- */
+.link-hover {
+  position: relative;
+  display: inline-block;
+}
+
+.link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width var(--duration-normal) var(--ease-out);
+}
+
+.link-hover:hover::after {
+  width: 100%;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .page {
+    padding: var(--space-page-top-m) var(--space-page-gutter-m);
+  }
+}

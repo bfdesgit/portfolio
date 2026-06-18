@@ -1,0 +1,104 @@
+/* ============================================
+   tokens.css — Design Tokens (CSS Custom Properties)
+   Extracted from Figma: zmUlTI9S43uiOgytfvROhl
+   ============================================ */
+
+:root {
+  /* ---- Colors ---- */
+  --color-bg-start:       #fd0b43;
+  --color-bg-end:         #ff3aa8;
+  --color-accent:         #fd0e49;
+  --color-surface:        #ffffff;
+  --color-text-primary:   #ffffff;
+  --color-text-dark:      #131313;
+  --color-text-muted:     rgba(19, 19, 19, 0.7);
+  --color-text-subtle:    rgba(255, 255, 255, 0.6);
+  --color-divider:        rgba(255, 255, 255, 0.2);
+
+  /* ---- Font Families ---- */
+  --font-serif:           'Instrument Serif', serif;
+  --font-sans:            'Cooper Hewitt', sans-serif;
+
+  /* ---- Font Weights ---- */
+  --weight-book:          300;
+  --weight-medium:        500;
+  --weight-semibold:      600;
+
+  /* ---- Font Sizes ---- */
+  --text-display:         5rem;
+  --text-display-mobile:  3.5rem;
+  --text-case-title:      4rem;
+  --text-about-name:      4rem;
+  --text-about-name-mobile: 2.5rem;
+  --text-about-title:     2.75rem;
+  --text-about-title-mobile: 1.8125rem;
+  --text-logo:            2.5rem;
+  --text-logo-mobile:     1.75rem;
+  --text-heading:         1.5rem;
+  --text-heading-sm:      1.1875rem;
+  --text-nav:             1.25rem;
+  --text-body:            1.5rem;
+  --text-body-sm:         1.125rem;
+  --text-body-xs:         1rem;
+  --text-caption:         0.75rem;
+  --text-stat:            2rem;
+  --text-stat-label:      1.125rem;
+
+  /* ---- Line Heights ---- */
+  --leading-tight:        0.9;
+  --leading-snug:         1.2;
+  --leading-normal:       1.4;
+  --leading-relaxed:      1.5;
+
+  /* ---- Letter Spacing ---- */
+  --tracking-tight:       -0.045rem;
+  --tracking-snug:        -0.0375rem;
+  --tracking-normal:      -0.03rem;
+  --tracking-wide:        0.0225rem;
+
+  /* ---- Spacing ---- */
+  --space-page-gutter:     3rem;
+  --space-page-gutter-m:   1.5rem;
+  --space-page-top:        2.5rem;
+  --space-page-top-m:      4rem;
+  --space-section-gap:     7.75rem;
+  --space-section-gap-sm:  3.75rem;
+  --space-card-gap:        2.5rem;
+  --space-card-gap-sm:     1.5rem;
+  --space-card-padding:    1.5rem;
+  --space-card-padding-lg: 2rem;
+  --space-content-gap:     2.5rem;
+  --space-content-gap-sm:  2rem;
+  --space-hero-gap:        6.25rem;
+  --space-divider-margin:  7.75rem;
+
+  /* ---- Border Radius ---- */
+  --radius-card:           1.5rem;
+  --radius-card-inner:     0.75rem;
+  --radius-button:         0.75rem;
+
+  /* ---- Layout ---- */
+  --max-content:           84rem;
+  --hero-text-width:       55rem;
+  --hero-subtitle-width:   46.375rem;
+  --case-subtitle-width:   42.0625rem;
+  --about-left-col:        28rem;
+  --about-right-col:       41.9375rem;
+  --about-col-gap:         14.0625rem;
+
+  /* ---- Transitions ---- */
+  --ease-out:              cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in-out:           cubic-bezier(0.42, 0, 0.58, 1);
+  --duration-fast:         200ms;
+  --duration-normal:       350ms;
+  --duration-slow:         600ms;
+}
+
+@media (max-width: 1280px) {
+  :root {
+    --text-body-sm: 1rem;
+    --text-stat-label: 1rem;
+    --text-heading: 1.25rem;
+    --text-body: 1.25rem;
+  }
+}

@@ -1,0 +1,33 @@
+/* ============================================
+   info-card.css — Process & Results cards (case study)
+   ============================================ */
+
+.info-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  text-align: center;
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  padding: var(--space-card-padding-lg);
+  overflow: hidden;
+}
+
+.info-card__title {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-heading);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-text-dark);
+}
+
+.info-card__body {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-body-sm);
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-muted);
+}

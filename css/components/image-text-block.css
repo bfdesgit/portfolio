@@ -1,0 +1,123 @@
+/* ============================================
+   section-divider.css — HR between case study sections
+   tag-bar.css — Tag pills in case hero
+   image-text-block.css — Split image+text layouts
+   ============================================ */
+
+/* ---- Section Divider ---- */
+.section-divider {
+  border: none;
+  height: 1px;
+  background: var(--color-divider);
+  width: 100%;
+  margin: var(--space-divider-margin) 0;
+}
+
+/* ---- Tag Bar ---- */
+.tag-bar {
+  display: flex;
+  align-items: center;
+  gap: 1.125rem;
+}
+
+.tag-bar__tag {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-body-xs);
+  line-height: var(--leading-normal);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.tag-bar__divider {
+  width: 1px;
+  height: 0.75rem;
+  background: var(--color-text-primary);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+/* ---- Image + Text Block ---- */
+.img-text-block {
+  display: flex;
+  gap: 0;
+  align-items: flex-start;
+}
+
+.img-text-block--reverse {
+  flex-direction: row-reverse;
+}
+
+.img-text-block__image {
+  flex-shrink: 0;
+}
+
+.img-text-block__image img {
+  border-radius: var(--radius-card);
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.img-text-block__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.img-text-block__title {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-heading-sm);
+  line-height: var(--leading-snug);
+  color: var(--color-text-primary);
+}
+
+.img-text-block__body {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-body-sm);
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-primary);
+}
+
+/* ---- Image grid (two images side by side) ---- */
+.image-grid {
+  display: flex;
+  gap: var(--space-card-gap-sm);
+}
+
+.image-grid__item {
+  flex: 1;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.image-grid__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .img-text-block,
+  .img-text-block--reverse {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .image-grid {
+    flex-direction: column;
+  }
+
+  .tag-bar {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .section-divider {
+    margin: 3.75rem 0;
+  }
+}
