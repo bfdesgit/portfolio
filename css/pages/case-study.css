@@ -66,16 +66,19 @@
   overflow: hidden;
   height: 22.75rem;
   background: var(--color-surface);
+  position: relative;
 }
 
 .case__hero-img--side {
   width: 28rem;
   flex-shrink: 0;
+  z-index: 1;
 }
 
 .case__hero-img--center {
   flex: 1;
   min-width: 0;
+  z-index: 2;
 }
 
 .case__hero-img img {
@@ -252,6 +255,12 @@
 
 .case__process-cards .info-card {
   flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.case__process-cards .info-card:nth-child(2) {
+  z-index: 2;
 }
 
 .case__process-text {
@@ -431,6 +440,12 @@
 
 .case__results-cards .info-card {
   flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.case__results-cards .info-card:nth-child(2) {
+  z-index: 2;
 }
 
 .case__results-img {
@@ -769,11 +784,8 @@
   .case__hero-title {
     font-size: 3rem !important;
   }
-}
 
-@media (max-width: 430px) {
-  .case__process-images-row,
-  .image-grid {
+  .case__process-images-row {
     flex-direction: column !important;
     gap: 1rem !important;
   }
@@ -784,7 +796,20 @@
     flex: none !important;
   }
 
-  .case__process-images-row .case__process-img,
+  .case__process-images-row .case__process-img {
+    height: 15rem !important;
+    width: 100% !important;
+    max-width: none !important;
+    flex: none !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .image-grid {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+
   .image-grid__item {
     height: 15rem !important;
     width: 100% !important;
