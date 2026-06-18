@@ -425,4 +425,11 @@ body.about-page {
   min-height: auto;
 }
 
+@media (min-width: 1920px) {
+  .about__right {
+    padding-top: 15rem;
+  }
+}
+
+
 
