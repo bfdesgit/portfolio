@@ -141,8 +141,15 @@
   }
 }
 
+@media (max-width: 600px) {
+  .project-card__img-inner {
+    max-height: 8rem !important;
+  }
+}
+
 @media (max-width: 430px) {
   .project-card--next .project-card__img-inner {
     height: 15rem !important;
+    max-height: none !important;
   }
 }

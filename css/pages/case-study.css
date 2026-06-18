@@ -765,6 +765,12 @@
   }
 }
 
+@media (max-width: 600px) {
+  .case__hero-title {
+    font-size: 3rem !important;
+  }
+}
+
 @media (max-width: 430px) {
   .case__process-images-row,
   .image-grid {

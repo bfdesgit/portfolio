@@ -110,7 +110,7 @@ body {
 }
 
 /* ---- Responsive ---- */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .page {
     padding: var(--space-page-top-m) var(--space-page-gutter-m);
   }
