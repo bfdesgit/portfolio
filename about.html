@@ -80,43 +80,68 @@
 
           <!-- Block: I like building things -->
           <article class="about__block">
-            <h2 class="about__block-title">I like building things</h2>
-            <ul class="about__list">
-              <li class="about__list-item">Launched "Jony Eye", a Figma plugin that got featured on Product Hunt.</li>
-              <li class="about__list-item">Awarded by DesignRush and Awwwards (Honorable Mentions, 2023).</li>
-              <li class="about__list-item">Created an AR Mask for STEM Fellowship event award.</li>
-            </ul>
+            <div class="about__block-trigger">
+              <h2 class="about__block-title">I like building things</h2>
+              <ul class="about__list">
+                <li class="about__list-item">Launched "Jony Eye", a Figma plugin that got featured on Product Hunt.</li>
+                <li class="about__list-item">Awarded by DesignRush and Awwwards (Honorable Mentions, 2023).</li>
+                <li class="about__list-item">Created an AR Mask for STEM Fellowship event award.</li>
+              </ul>
+              <div class="about__hover-image">
+                <img src="assets/images/about/hover/building.png" alt="Figma plugin mockup">
+              </div>
+            </div>
           </article>
 
           <!-- Row: Exploring 3D + AI-friendly -->
           <div class="about__blocks-row">
             <article class="about__block-half">
-              <h2 class="about__block-half-title">Exploring 3D</h2>
-              <p class="about__block-half-body">
-                Always loved beautiful visuals, so I started with Cinema 4D to add depth to my work. One day I'll be crazy enough to touch Houdini :)
-              </p>
+              <div class="about__block-trigger">
+                <h2 class="about__block-half-title">Exploring 3D</h2>
+                <p class="about__block-half-body">
+                  Always loved beautiful visuals, so I started with Cinema 4D to add depth to my work. One day I'll be crazy enough to touch Houdini :)
+                </p>
+                <div class="about__hover-image">
+                  <img src="assets/images/about/hover/exploring_3d.png" alt="3D abstract render">
+                </div>
+              </div>
             </article>
             <article class="about__block-half">
-              <h2 class="about__block-half-title">AI-friendly</h2>
-              <p class="about__block-half-body">
-                I'm actively implementing AI in my pipeline, but I always keep my hands on the steering wheel.
-              </p>
+              <div class="about__block-trigger">
+                <h2 class="about__block-half-title">AI-friendly</h2>
+                <p class="about__block-half-body">
+                  I'm actively implementing AI in my pipeline, but I always keep my hands on the steering wheel.
+                </p>
+                <div class="about__hover-image">
+                  <img src="assets/images/about/hover/ai_friendly.png" alt="Neural network visualization">
+                </div>
+              </div>
             </article>
           </div>
 
           <!-- Row: Off-screen + PetLover -->
           <div class="about__blocks-row">
             <article class="about__block-half">
-              <h2 class="about__block-half-title">Off-screen</h2>
-              <p class="about__block-half-body">
-                When I'm not pushing pixels, you'll probably find me at a heavy metal gig, lifting heavy things at the gym, or just chilling at home getting judged by my cat.
-              </p>
+              <div class="about__block-trigger">
+                <h2 class="about__block-half-title">Off-screen</h2>
+                <p class="about__block-half-body">
+                  When I'm not pushing pixels, you'll probably find me at a heavy metal gig, lifting heavy things at the gym, or just chilling at home getting judged by my cat.
+                </p>
+                <div class="about__hover-image">
+                  <img src="assets/images/about/hover/off_screen.png" alt="Electric guitar and dumbbell">
+                </div>
+              </div>
             </article>
             <article class="about__block-half">
-              <h2 class="about__block-half-title">PetLover</h2>
-              <p class="about__block-half-body">
-                And if you don't like pets, we're probably not a match — please don't contact me (seriously).
-              </p>
+              <div class="about__block-trigger">
+                <h2 class="about__block-half-title">PetLover</h2>
+                <p class="about__block-half-body">
+                  And if you don't like pets, we're probably not a match — please don't contact me (seriously).
+                </p>
+                <div class="about__hover-image">
+                  <img src="assets/images/about/hover/pet_lover.png" alt="Cute judging black cat">
+                </div>
+              </div>
             </article>
           </div>
 
@@ -141,5 +166,8 @@
 
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="js/about.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
