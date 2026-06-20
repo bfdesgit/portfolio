@@ -73,14 +73,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const onClick = (e) => {
       if (window.innerWidth > 1024) return;
 
-      const rect = trigger.getBoundingClientRect();
-      const clickX = e.clientX - rect.left;
-      const clickY = e.clientY - rect.top;
+      // Center the image container inside the trigger block
+      const centerX = trigger.offsetWidth / 2;
+      const centerY = trigger.offsetHeight / 2;
 
-      // Position the container at click location
+      // Position the container at the center of the trigger block
       gsap.set(imgContainer, {
-        x: clickX,
-        y: clickY,
+        x: centerX,
+        y: centerY,
         xPercent: -50,
         yPercent: -50,
         scale: 0.8,

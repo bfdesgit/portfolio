@@ -433,8 +433,14 @@ body.about-page {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  width: fit-content;
+  width: 100%;
   max-width: 100%;
+}
+
+@media (min-width: 1025px) {
+  .about__block-trigger {
+    width: fit-content;
+  }
 }
 
 .about__hover-image {
