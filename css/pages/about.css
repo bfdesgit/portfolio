@@ -350,7 +350,7 @@
 
   .about__photo img {
     width: 100%;
-    height: auto;
+    height: 100%;
   }
 
   .about__right {
@@ -422,8 +422,18 @@ body.about-page {
 }
 
 @media (min-width: 1920px) {
+  .about__content {
+    align-items: center;
+  }
+
+  .about__left {
+    position: relative;
+    top: auto;
+    align-self: center;
+  }
+
   .about__right {
-    padding-top: 15rem;
+    padding-top: 0;
   }
 }
 
