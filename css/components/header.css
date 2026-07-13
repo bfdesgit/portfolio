@@ -159,8 +159,8 @@
   right: 0;
   bottom: 0;
   background: var(--color-surface); /* White background */
-  clip-path: url(#squircle-clip);
-  -webkit-clip-path: url(#squircle-clip);
+  clip-path: url(#squircle-clip-contact);
+  -webkit-clip-path: url(#squircle-clip-contact);
   z-index: 1; /* Sits below text and icon */
   transition: background var(--duration-fast) var(--ease-out);
 }
