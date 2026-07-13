@@ -836,3 +836,190 @@
     flex: none !important;
   }
 }
+
+/* ============================================
+   Lightbox Modal for Case Studies
+   ============================================ */
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(19, 19, 19, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-normal) var(--ease-in-out);
+}
+
+.lightbox.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox__content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  max-width: 75rem;
+  height: 80%;
+}
+
+.lightbox__image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.5);
+  transform: scale(0.95);
+  opacity: 0;
+  transition: transform var(--duration-normal) var(--ease-out), opacity var(--duration-normal) var(--ease-out);
+}
+
+.lightbox.is-active .lightbox__image {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: -3.5rem;
+  right: 0;
+  width: 3rem;
+  height: 3rem;
+  background: transparent; /* Set to transparent, background handled by ::before */
+  border: none;
+  color: #131313; /* Black icon from Figma */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--duration-fast) var(--ease-out);
+  filter: drop-shadow(0 0.5rem 1.5rem rgba(0, 0, 0, 0.15));
+}
+
+.lightbox__close::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ffffff; /* White background from Figma */
+  clip-path: url(#squircle-clip);
+  -webkit-clip-path: url(#squircle-clip);
+  z-index: -1;
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.lightbox__close:hover {
+  transform: scale(1.05);
+}
+
+.lightbox__close:hover::before {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Navigation Buttons */
+.lightbox__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  background: transparent; /* Set to transparent, background handled by ::before */
+  border: none;
+  color: #131313; /* Black icon from Figma */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--duration-fast) var(--ease-out);
+  z-index: 1010;
+  filter: drop-shadow(0 0.5rem 1.5rem rgba(0, 0, 0, 0.15));
+}
+
+.lightbox__btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ffffff; /* White background from Figma */
+  clip-path: url(#squircle-clip);
+  -webkit-clip-path: url(#squircle-clip);
+  z-index: -1;
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.lightbox__btn:hover {
+  transform: translateY(-50%) scale(1.05);
+}
+
+.lightbox__btn:hover::before {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.lightbox__btn--prev {
+  left: -5rem;
+}
+
+.lightbox__btn--next {
+  right: -5rem;
+}
+
+/* Hover hint on case content images */
+.case img:not(.project-card__img):not(.header__logo img):not(.case__next img):not(.project-card img) {
+  cursor: zoom-in;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.case img:not(.project-card__img):not(.header__logo img):not(.case__next img):not(.project-card img):hover {
+  opacity: 0.95;
+}
+
+/* ---- Responsive Lightbox ---- */
+@media (max-width: 1280px) {
+  .lightbox__btn--prev {
+    left: 1rem;
+  }
+  .lightbox__btn--next {
+    right: 1rem;
+  }
+  .lightbox__close {
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .lightbox__content {
+    width: 95%;
+    height: 70%;
+  }
+  
+  .lightbox__btn {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+  
+  .lightbox__close {
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.75rem;
+    top: 2rem;
+    right: 1.5rem;
+  }
+}
+
