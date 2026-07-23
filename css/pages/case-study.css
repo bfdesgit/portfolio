@@ -882,11 +882,35 @@
   box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.5);
   transform: scale(0.95);
   opacity: 0;
+  cursor: zoom-in;
   transition: transform var(--duration-normal) var(--ease-out), opacity var(--duration-normal) var(--ease-out);
 }
 
 .lightbox.is-active .lightbox__image {
   transform: scale(1);
+  opacity: 1;
+}
+
+/* Lightbox Zoom States */
+.lightbox.is-zoomed .lightbox__image {
+  cursor: grab;
+  transition: opacity var(--duration-normal) var(--ease-out); /* Disable transform transition for lag-free dragging */
+}
+
+.lightbox.is-zoomed .lightbox__image.is-dragging {
+  cursor: grabbing;
+}
+
+.lightbox.is-zoomed .lightbox__btn {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.lightbox.is-zoomed .lightbox__close {
+  opacity: 0.4;
+}
+
+.lightbox.is-zoomed .lightbox__close:hover {
   opacity: 1;
 }
 

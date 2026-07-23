@@ -130,10 +130,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = lightbox.querySelector('.lightbox__btn--next');
 
     let currentIndex = 0;
+    let isZoomed = false;
+    let isDragging = false;
+    let startX = 0, startY = 0;
+    let translateX = 0, translateY = 0;
+
+    const resetZoom = (immediate = false) => {
+      if (!isZoomed) return;
+      isZoomed = false;
+      isDragging = false;
+      translateX = 0;
+      translateY = 0;
+      lightbox.classList.remove('is-zoomed');
+      if (immediate) {
+        gsap.set(lightboxImg, { scale: 1, x: 0, y: 0 });
+      } else {
+        gsap.to(lightboxImg, {
+          scale: 1,
+          x: 0,
+          y: 0,
+          duration: 0.25,
+          ease: 'power2.out'
+        });
+      }
+    };
 
     const updateLightboxImage = () => {
       const currentImg = images[currentIndex];
       if (!currentImg) return;
+
+      resetZoom(true); // Reset zoom immediately on image change
 
       // Animate out previous image
       gsap.to(lightboxImg, {
@@ -174,6 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const closeLightbox = () => {
       document.body.style.overflow = '';
+      resetZoom(true); // Reset zoom immediately on close
 
       gsap.to(lightbox, {
         opacity: 0,
@@ -229,6 +256,78 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    // Image Zoom and Pan Controls
+    lightboxImg.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent backdrop close trigger
+      if (!isZoomed) {
+        isZoomed = true;
+        lightbox.classList.add('is-zoomed');
+        gsap.to(lightboxImg, {
+          scale: 2.0,
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      } else {
+        resetZoom();
+      }
+    });
+
+    lightboxImg.addEventListener('mousedown', (e) => {
+      if (!isZoomed) return;
+      e.preventDefault();
+      isDragging = true;
+      lightboxImg.classList.add('is-dragging');
+      startX = e.clientX - translateX;
+      startY = e.clientY - translateY;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      translateX = e.clientX - startX;
+      translateY = e.clientY - startY;
+
+      // Restrict panning boundary limits
+      const boundX = window.innerWidth * 0.8;
+      const boundY = window.innerHeight * 0.8;
+      translateX = Math.max(-boundX, Math.min(boundX, translateX));
+      translateY = Math.max(-boundY, Math.min(boundY, translateY));
+
+      gsap.set(lightboxImg, { x: translateX, y: translateY });
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isDragging) {
+        isDragging = false;
+        lightboxImg.classList.remove('is-dragging');
+      }
+    });
+
+    // Touch event listeners for mobile panning
+    lightboxImg.addEventListener('touchstart', (e) => {
+      if (!isZoomed) return;
+      if (e.touches.length > 1) return; // Prevent interference with pinch gestures
+      isDragging = true;
+      startX = e.touches[0].clientX - translateX;
+      startY = e.touches[0].clientY - translateY;
+    }, { passive: true });
+
+    lightboxImg.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      translateX = e.touches[0].clientX - startX;
+      translateY = e.touches[0].clientY - startY;
+
+      const boundX = window.innerWidth * 0.8;
+      const boundY = window.innerHeight * 0.8;
+      translateX = Math.max(-boundX, Math.min(boundX, translateX));
+      translateY = Math.max(-boundY, Math.min(boundY, translateY));
+
+      gsap.set(lightboxImg, { x: translateX, y: translateY });
+    }, { passive: true });
+
+    lightboxImg.addEventListener('touchend', () => {
+      isDragging = false;
+    }, { passive: true });
+
     // Swipe navigation for touch screens
     let touchStartX = 0;
     let touchEndX = 0;
@@ -243,6 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
 
     const handleSwipe = () => {
+      if (isZoomed) return; // Prevent navigation swipe while zooming
       const swipeThreshold = 50;
       if (touchEndX < touchStartX - swipeThreshold) {
         showNextImage();
