@@ -1,0 +1,12 @@
+{
+  "name": "yurii-baidan-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website for Yurii Baidan",
+  "main": "js/main.js",
+  "scripts": {
+    "convert-images": "node convert-images.js"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5"
+  }
+}

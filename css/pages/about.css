@@ -85,10 +85,12 @@
   overflow: hidden;
 }
 
+.about__photo picture,
 .about__photo img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .about__photo-note {
@@ -469,9 +471,10 @@ body.about-page {
   transform-origin: center center;
 }
 
+.about__hover-image picture,
 .about__hover-image img {
   height: 100%;
-  width: auto;
+  width: 100%;
   object-fit: cover;
   display: block;
 }

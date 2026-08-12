@@ -113,7 +113,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <polyline points="10 18 4 12 10 6"></polyline>
           </svg>
         </button>
-        <img class="lightbox__image" src="" alt="">
+        <picture class="lightbox__picture">
+          <source class="lightbox__source" srcset="" type="image/webp">
+          <img class="lightbox__image" src="" alt="">
+        </picture>
         <button class="lightbox__btn lightbox__btn--next" aria-label="Next image">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="4" y1="12" x2="20" y2="12"></line>
@@ -125,6 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(lightbox);
 
     const lightboxImg = lightbox.querySelector('.lightbox__image');
+    const lightboxSource = lightbox.querySelector('.lightbox__source');
     const closeBtn = lightbox.querySelector('.lightbox__close');
     const prevBtn = lightbox.querySelector('.lightbox__btn--prev');
     const nextBtn = lightbox.querySelector('.lightbox__btn--next');
@@ -161,6 +165,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
       resetZoom(true); // Reset zoom immediately on image change
 
+      const fallbackSrc = currentImg.getAttribute('src') || currentImg.src;
+      let webpSrc = '';
+
+      if (currentImg.parentElement && currentImg.parentElement.tagName.toLowerCase() === 'picture') {
+        const sourceEl = currentImg.parentElement.querySelector('source[type="image/webp"]');
+        if (sourceEl) {
+          webpSrc = sourceEl.srcset || sourceEl.getAttribute('srcset');
+        }
+      }
+
+      if (!webpSrc && /\.(png|jpe?g)$/i.test(fallbackSrc.split('?')[0])) {
+        webpSrc = fallbackSrc.replace(/\.(png|jpe?g)(\?.*)?$/i, '.webp$2');
+      }
+
       // Animate out previous image
       gsap.to(lightboxImg, {
         opacity: 0,
@@ -168,17 +186,32 @@ document.addEventListener('DOMContentLoaded', () => {
         duration: 0.15,
         ease: 'power2.in',
         onComplete: () => {
-          lightboxImg.src = currentImg.src;
           lightboxImg.alt = currentImg.alt || 'Full size image';
 
-          lightboxImg.onload = () => {
-            gsap.to(lightboxImg, {
-              opacity: 1,
-              scale: 1,
-              duration: 0.25,
-              ease: 'power2.out'
-            });
+          const applyImageSources = (useWebp) => {
+            if (lightboxSource) {
+              lightboxSource.srcset = useWebp ? webpSrc : '';
+            }
+            lightboxImg.src = fallbackSrc;
+
+            lightboxImg.onload = () => {
+              gsap.to(lightboxImg, {
+                opacity: 1,
+                scale: 1,
+                duration: 0.25,
+                ease: 'power2.out'
+              });
+            };
           };
+
+          if (webpSrc) {
+            const testImg = new Image();
+            testImg.onload = () => applyImageSources(true);
+            testImg.onerror = () => applyImageSources(false);
+            testImg.src = webpSrc;
+          } else {
+            applyImageSources(false);
+          }
         }
       });
     };

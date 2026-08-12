@@ -31,14 +31,17 @@
   position: relative;
 }
 
+.project-card__img-inner picture,
 .project-card__img-inner img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   border-radius: var(--radius-card-inner);
   transition: transform var(--duration-slow) var(--ease-out);
 }
 
+.project-card:hover .project-card__img-inner picture,
 .project-card:hover .project-card__img-inner img {
   transform: scale(1.04);
 }
@@ -107,6 +110,7 @@
   border-radius: var(--radius-card) var(--radius-card) 0 0;
 }
 
+.project-card--next .project-card__img-inner picture,
 .project-card--next .project-card__img-inner img {
   border-radius: var(--radius-card) var(--radius-card) 0 0;
 }

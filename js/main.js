@@ -112,3 +112,89 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+/* ============================================
+   Auto WebP Picture Wrapper
+   ============================================ */
+function initAutoWebpPictures() {
+  const processedImages = new WeakSet();
+
+  function processImage(img) {
+    if (!img || processedImages.has(img)) return;
+
+    // Skip if already wrapped in a <picture> tag
+    if (img.parentElement && img.parentElement.tagName.toLowerCase() === 'picture') {
+      processedImages.add(img);
+      return;
+    }
+
+    const src = img.getAttribute('src');
+    if (!src) return;
+
+    // Ignore SVGs, data URIs, and images already pointing to .webp
+    const cleanSrc = src.split('?')[0].split('#')[0];
+    const extMatch = cleanSrc.match(/\.(png|jpe?g)$/i);
+    if (!extMatch) return;
+
+    processedImages.add(img);
+
+    // Compute target WebP path
+    const webpSrc = src.replace(/\.(png|jpe?g)(\?.*)?$/i, '.webp$2');
+
+    // Test whether WebP exists on the server before wrapping
+    const testImg = new Image();
+    testImg.onload = () => {
+      if (img.parentElement && img.parentElement.tagName.toLowerCase() === 'picture') return;
+
+      const picture = document.createElement('picture');
+      if (img.className) {
+        picture.className = img.className + ' auto-picture';
+      }
+      const source = document.createElement('source');
+      source.srcset = webpSrc;
+      source.type = 'image/webp';
+
+      if (img.parentNode) {
+        img.parentNode.insertBefore(picture, img);
+        picture.appendChild(source);
+        picture.appendChild(img);
+      }
+    };
+    testImg.onerror = () => {
+      // WebP unavailable — original <img> acts as clean fallback
+    };
+    testImg.src = webpSrc;
+  }
+
+  function processAllImages() {
+    document.querySelectorAll('img').forEach(processImage);
+  }
+
+  processAllImages();
+
+  // Monitor DOM for dynamic <img> elements added later
+  const observer = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      mutation.addedNodes.forEach((node) => {
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          if (node.tagName && node.tagName.toLowerCase() === 'img') {
+            processImage(node);
+          } else if (node.querySelectorAll) {
+            node.querySelectorAll('img').forEach(processImage);
+          }
+        }
+      });
+    }
+  });
+
+  if (document.body) {
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAutoWebpPictures);
+} else {
+  initAutoWebpPictures();
+}
+
