@@ -479,6 +479,14 @@ body.about-page {
   display: block;
 }
 
+@media (max-width: 1024px) {
+  .about__hover-image {
+    width: 9.8rem;
+    height: 9.8rem;
+    aspect-ratio: 1 / 1;
+  }
+}
+
 
 
 
