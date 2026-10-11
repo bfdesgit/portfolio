@@ -200,6 +200,65 @@
   max-width: 24rem;
 }
 
+/* ---- Pain Points (AI Lobbying Platform) ---- */
+.case__problem--pain-points .case__problem-img {
+  height: 41.625rem; /* 666px */
+}
+
+.case__problem-cols {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.case__problem-cols .case__section-body {
+  flex: 1;
+}
+
+.pain-points {
+  margin-top: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.pain-points__title {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-tight);
+  color: var(--color-text-primary);
+}
+
+.pain-points__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.pain-points__row {
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.pain-points__item {
+  flex: 1;
+  max-width: 12.5rem;
+  font-family: var(--font-sans);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-body-sm);
+  line-height: 1.41;
+  color: var(--color-text-primary);
+}
+
+.pain-points__divider {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+  min-height: 5.625rem;
+}
+
 /* ---- Ideation section ---- */
 .case__ideation {
   max-width: 56rem;
@@ -704,6 +763,30 @@
     width: 100%;
   }
 
+  .case__problem--pain-points .case__problem-img {
+    height: auto !important;
+    aspect-ratio: 448 / 666 !important;
+  }
+
+  .case__problem-cols {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .pain-points__row {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .pain-points__divider {
+    display: none;
+  }
+
+  .pain-points__item {
+    max-width: 100%;
+    flex: 1 1 calc(50% - 1.5rem);
+  }
+
   .case__ideation-body {
     flex-direction: column;
     gap: 1.5rem;
@@ -802,6 +885,10 @@
   .case__next-cards {
     flex-direction: column;
     width: 100% !important;
+  }
+
+  .pain-points__item {
+    flex: 1 1 100% !important;
   }
 }
 
