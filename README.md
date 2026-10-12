@@ -4,7 +4,7 @@ Personal portfolio website for Yurii Baidan, Senior Product Designer. Built as a
 
 ## 🚀 Features
 
-- **Multi-Page Layout**: 5 static pages (Home, About, Jurna Case Study, LobbyMatic Skeleton, Health OS Skeleton).
+- **Multi-Page Layout**: 5 static pages (Home, About, Jurna Case Study, AI Lobbying Platform Skeleton, Health OS Skeleton).
 - **Responsive Design System**: Fully responsive layout scaled in `rem` units, with custom breakpoints at `1438px`, `1280px`, `1024px`, `600px`, and `430px`.
 - **Fluid Asset Scaling**: Proportional image and card resizing across standard device widths.
 - **Typography Polish**: Custom typography with self-hosted Cooper Hewitt fonts and Instrument Serif display styles.
@@ -18,7 +18,7 @@ anti-try/
 ├── about.html          # About Page
 ├── case/
 │   ├── jurna.html      # Jurna Case Study
-│   ├── lobbymatic.html # LobbyMatic Skeleton Case
+│   ├── ai-lobbying-platform.html # AI Lobbying Platform Skeleton Case
 │   └── health-os.html  # Health OS Skeleton Case
 ├── css/
 │   ├── tokens.css      # Design token variables

@@ -397,4 +397,52 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // ============================================
+  // Autoplay Embedded Videos on Viewport Entry
+  // ============================================
+  const videoIframes = document.querySelectorAll('iframe[src*="player.mux.com"]');
+  if (videoIframes.length > 0 && 'IntersectionObserver' in window) {
+    videoIframes.forEach((iframe) => {
+      let playerInstance = null;
+      if (typeof playerjs !== 'undefined') {
+        try {
+          playerInstance = new playerjs.Player(iframe);
+          playerInstance.on('ready', () => {
+            playerInstance.mute();
+          });
+        } catch (e) {}
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Trigger playback when in view
+            if (playerInstance) {
+              try { playerInstance.play(); } catch (e) {}
+            }
+            try {
+              iframe.contentWindow.postMessage(JSON.stringify({ method: 'play', value: null }), '*');
+              iframe.contentWindow.postMessage({ method: 'play' }, '*');
+              iframe.contentWindow.postMessage({ type: 'play' }, '*');
+              iframe.contentWindow.postMessage({ api: 'play' }, '*');
+            } catch (e) {}
+          } else {
+            // Pause playback when leaving view
+            if (playerInstance) {
+              try { playerInstance.pause(); } catch (e) {}
+            }
+            try {
+              iframe.contentWindow.postMessage(JSON.stringify({ method: 'pause', value: null }), '*');
+              iframe.contentWindow.postMessage({ method: 'pause' }, '*');
+              iframe.contentWindow.postMessage({ type: 'pause' }, '*');
+              iframe.contentWindow.postMessage({ api: 'pause' }, '*');
+            } catch (e) {}
+          }
+        });
+      }, { threshold: 0.25 });
+
+      observer.observe(iframe);
+    });
+  }
 });

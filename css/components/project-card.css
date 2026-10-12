@@ -56,7 +56,7 @@
 .project-card__content {
   display: flex;
   flex-direction: column;
-  gap: 1.125rem;
+  gap: 0.5rem;
   padding: var(--space-card-padding);
   font-family: var(--font-sans);
   font-weight: var(--weight-medium);
@@ -123,7 +123,7 @@
 
 .project-card--next .project-card__content {
   padding: 1.125rem;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .project-card--next .project-card__title {
